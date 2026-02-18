@@ -1,371 +1,915 @@
-local WindUI = (loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua")))();
-local Window = WindUI:CreateWindow({
+local Library = loadstring(game:HttpGet("https://luacrack.site/index.php/araujozwx/raw/SourceBananaUi"))()
+local Window = Library:CreateWindow({
     Title = "Luan Cat Hub",
-    Author = "Blox Fruits",
-    Folder = "By Luan Cat",
-    Size = UDim2.fromOffset(520, 300),
-    Transparent = true,
-    Theme = "Dark",
-    SideBarWidth = 190,
-    HasOutline = false,
-});
-Window:EditOpenButton({
-    Title = "Luan Cat",
-    CornerRadius = UDim.new(0, 10),
-    Draggable = false
-});
+    Desc = "By:Luan Cat V3",
+    Image = "rbxassetid://84722735301781"
+})
+
 local Tabs = {
-	MainTab = Window:Tab({
-		Title = "Main",
-		Icon = "house",
-		Desc = "Main Section"
-	}),
-	OthersTab = Window:Tab({
-		Title = "Others",
-		Icon = "inbox",
-		Desc = "Farming Section"
-	}),
-	ItemsTab = Window:Tab({
-		Title = "Items",
-		Icon = "box",
-		Desc = "Items Section"
-	}),
-	SettingsTab = Window:Tab({
-		Title = "Settings",
-		Icon = "settings",
-		Desc = "Settings Section"
-	}),
-	LocalPlayerTab = Window:Tab({
-		Title = "Local Player",
-		Icon = "user",
-		Desc = "Local Player Section"
-	}),
-	StatsTab = Window:Tab({
-		Title = "Stats",
-		Icon = "chart-no-axes-column",
-		Desc = "Stats Section"
-	}),
-	SeaEventTab = Window:Tab({
-		Title = "Sea Event",
-		Icon = "anchor",
-		Desc = "Sea Event Section"
-	}),
-	SeaStackTab = Window:Tab({
-		Title = "Sea Stack",
-		Icon = "waves",
-		Desc = "Sea Stack Section"
-	}),
-	SeaSettingsTab = Window:Tab({
-		Title = "Sea Settings",
-		Icon = "cog",
-		Desc = "Sea Settings Section"
-	}),
-	DragonDojoTab = Window:Tab({
-		Title = "Dragon Dojo",
-		Icon = "shield",
-		Desc = "Dragon Dojo Section"
-	}),
-	RaceTab = Window:Tab({
-		Title = "Race",
-		Icon = "bot",
-		Desc = "Race Section"
-	}),
-	CombatTab = Window:Tab({
-		Title = "Combat",
-		Icon = "sword",
-		Desc = "Combat Section"
-	}),
-	RaidTab = Window:Tab({
-		Title = "Raid",
-		Icon = "door-open",
-		Desc = "Raid Section"
-	}),
-	EspTab = Window:Tab({
-		Title = "Esp",
-		Icon = "scan-eye",
-		Desc = "Esp Section"
-	}),
-	TeleportTab = Window:Tab({
-		Title = "Teleport",
-		Icon = "map-pinned",
-		Desc = "Teleport Section"
-	}),
-	ShopTab = Window:Tab({
-		Title = "Shop",
-		Icon = "shopping-cart",
-		Desc = "Shop Section"
-	}),
-	FruitTab = Window:Tab({
-		Title = "Fruit",
-		Icon = "vegan",
-		Desc = "Fruit Section"
-	}),
-	MiscTab = Window:Tab({
-		Title = "Misc",
-		Icon = "layout-grid",
-		Desc = "Misc Section"
-	}),
-	ServerTab = Window:Tab({
-		Title = "Server",
-		Icon = "server",
-		Desc = "Server Section"
-	})
-};
-Window:SelectTab(1);
-_G.Settings = {
-	Main = {
-		["Select Weapon"] = "Melee",
-		["Farm Level Method"] = "Quest",
-		["Auto Farm"] = false,
-		["Auto Fast Farm"] = false,
-		["Mastery Method"] = "Quest",
-		["Auto Farm Fruit Mastery"] = false,
-		["Auto Farm Gun Mastery"] = false,
-		["Selected Mastery Sword"] = nil,
-		["Auto Farm Sword Mastery"] = false,
-		["Auto Summon Tyrant Of The Skies"] = false,
-		["Auto Kill Tyrant Of The Skies"] = false,
-		["Selected Mon"] = nil,
-		["Auto Farm Mon"] = false,
-		["Selected Boss"] = nil,
-		["Auto Farm Boss"] = false,
-		["Auto Farm All Boss"] = false
-	},
-	Event = {},
-	Farm = {
-		["Auto Elite Hunter"] = false,
-		["Auto Elite Hunter Hop"] = false,
-		["Selected Bone Farm Method"] = "Quest",
-		["Auto Farm Bone"] = false,
-		["Auto Random Surprise"] = false,
-		["Auto Pirate Raid"] = false,
-		["Auto Farm Chest Tween"] = false,
-		["Auto Farm Chest Instant"] = false,
-		["Auto Chest Hop"] = false,
-		["Auto Farm Chest Mirage"] = false,
-		["Auto Stop Items"] = false,
-		["Auto Farm Katakuri"] = false,
-		["Auto Spawn Cake Prince"] = false,
-		["Auto Kill Cake Prince"] = false,
-		["Auto Kill Dough King"] = false,
-		["Selected Material"] = nil,
-		["Auto Farm Material"] = false
-	},
-	Setting = {
-		["Spin Position"] = false,
-		["Farm Distance"] = 35,
-		["Player Tween Speed"] = 350,
-		["Bring Mob"] = true,
-		["Bring Mob Mode"] = "Normal",
-		["Fast Attack"] = true,
-		["Fast Attack Mode"] = "Normal",
-		["Attack Aura"] = true,
-		["Hide Notification"] = false,
-		["Hide Damage Text"] = true,
-		["Black Screen"] = false,
-		["White Screen"] = false,
-		["Hide Monster"] = false,
-		["Mastery Health"] = 25,
-		["Fruit Mastery Skill Z"] = true,
-		["Fruit Mastery Skill X"] = true,
-		["Fruit Mastery Skill C"] = true,
-		["Fruit Mastery Skill V"] = false,
-		["Fruit Mastery Skill F"] = false,
-		["Gun Mastery Skill Z"] = true,
-		["Gun Mastery Skill X"] = true,
-		["Auto Set Spawn Point"] = true,
-		["Auto Observation"] = false,
-		["Auto Haki"] = true,
-		["Auto Rejoin"] = true
-	},
-	Stats = {
-		["Auto Add Melee Stats"] = false,
-		["Auto Add Defense Stats"] = false,
-		["Auto Add Devil Fruit Stats"] = false,
-		["Auto Add Sword Stats"] = false,
-		["Auto Add Gun Stats"] = false,
-		["Point Stats"] = 1
-	},
-	Items = {
-		["Auto Second Sea"] = false,
-		["Auto Third Sea"] = false,
-		["Auto Farm Factory"] = false,
-		["Auto Super Human"] = false,
-		["Auto Death Step"] = false,
-		["Auto Fishman Karate"] = false,
-		["Auto Electric Claw"] = false,
-		["Auto Dragon Talon"] = false,
-		["Auto God Human"] = false,
-		["Auto Saber"] = false,
-		["Auto Buddy Sword"] = false,
-		["Auto Soul Guitar"] = false,
-		["Auto Rengoku"] = false,
-		["Auto Hallow Scythe"] = false,
-		["Auto Warden Sword"] = false,
-		["Auto Cursed Dual Katana"] = false,
-		["Auto Yama"] = false,
-		["Auto Tushita"] = false,
-		["Auto Canvander"] = false,
-		["Auto Dragon Trident"] = false,
-		["Auto Pole"] = false,
-		["Auto Shawk Saw"] = false,
-		["Auto Greybeard"] = false,
-		["Auto Swan Glasses"] = false,
-		["Auto Arena Trainer"] = false,
-		["Auto Dark Dagger"] = false,
-		["Auto Press Haki Button"] = false,
-		["Auto Rainbow Haki"] = false,
-		["Auto Holy Torch"] = false,
-		["Auto Bartilo Quest"] = false
-	},
-	Esp = {
-		["ESP Player"] = false,
-		["ESP Chest"] = false,
-		["ESP DevilFruit"] = false,
-		["ESP RealFruit"] = false,
-		["ESP Flower"] = false,
-		["ESP Island"] = false,
-		["ESP Npc"] = false,
-		["ESP Sea Beast"] = false,
-		["ESP Monster"] = false,
-		["ESP Mirage"] = false,
-		["ESP Kitsune"] = false,
-		["ESP Frozen"] = false,
-		["ESP Advanced Fruit Dealer"] = false,
-		["ESP Aura"] = false,
-		["ESP Gear"] = false
-	},
-	DragonDojo = {
-		["Auto Farm Blaze Ember"] = false,
-		["Auto Collect Blaze Ember"] = false
-	},
-	SeaEvent = {
-		["Selected Boat"] = "Guardian",
-		["Selected Zone"] = "Zone 5",
-		["Boat Tween Speed"] = 300,
-		["Sail Boat"] = false,
-		["Auto Farm Shark"] = true,
-		["Auto Farm Piranha"] = true,
-		["Auto Farm Fish Crew Member"] = true,
-		["Auto Farm Ghost Ship"] = true,
-		["Auto Farm Pirate Brigade"] = true,
-		["Auto Farm Pirate Grand Brigade"] = true,
-		["Auto Farm Terrorshark"] = true,
-		["Auto Farm Seabeasts"] = true,
-		["Dodge Seabeasts Attack"] = true,
-		["Dodge Terrorshark Attack"] = true
-	},
-	SettingSea = {
-		Lightning = false,
-		["Increase Boat Speed"] = false,
-		["No Clip Rock"] = false,
-		["Use Devil Fruit Skill"] = true,
-		["Use Melee Skill"] = true,
-		["Use Sword Skill"] = true,
-		["Use Gun Skill"] = true,
-		["Devil Fruit Z Skill"] = true,
-		["Devil Fruit X Skill"] = true,
-		["Devil Fruit C Skill"] = true,
-		["Devil Fruit V Skill"] = false,
-		["Devil Fruit F Skill"] = false,
-		["Melee Z Skill"] = true,
-		["Melee X Skill"] = true,
-		["Melee C Skill"] = true,
-		["Melee V Skill"] = true
-	},
-	SeaStack = {
-		["Tween To Frozen Dimension"] = false,
-		["Summon Frozen Dimension"] = false,
-		["Tween To Kitsune Island"] = false,
-		["Summon Kitsune Island"] = false,
-		["Auto Collect Azure Ember"] = false,
-		["Set Azure Ember"] = 20,
-		["Auto Trade Azure Ember"] = false,
-		["Tween To Mirage Island"] = false,
-		["Teleport To Advanced Fruit Dealer"] = false,
-		["Auto Attack Seabeasts"] = false,
-		["Summon Prehistoric Island"] = false,
-		["Tween To Prehistoric Island"] = false,
-		["Auto Kill Lava Golem"] = false
-	},
-	Race = {
-		["Auto Race V2"] = false,
-		["Auto Race V3"] = false,
-		["Selected Place"] = nil,
-		["Teleport To Place"] = false,
-		["Auto Buy Gear"] = false,
-		["Tween To Highest Mirage"] = false,
-		["Find Blue Gear"] = false,
-		["Look Moon Ability"] = false,
-		["Auto Train"] = false,
-		["Auto Kill Player After Trial"] = false,
-		["Auto Trial"] = false
-	},
-	Combat = {
-		["Auto Kill Player Quest"] = false,
-		["Aimbot Gun"] = false,
-		["Aimbot Skill Neares"] = false,
-		["Aimbot Skill"] = false,
-		["Enable PvP"] = false
-	},
-	Raid = {
-		["Selected Chip"] = nil,
-		["Auto Raid"] = false,
-		["Auto Awaken"] = false,
-		["Price Devil Fruit"] = 1000000,
-		["Unstore Devil Fruit"] = false,
-		["Law Raid"] = false
-	},
-	Shop = {
-		["Auto Buy Legendary Sword"] = false,
-		["Auto Buy Haki Color"] = false
-	},
-	LocalPlayer = {
-		["Infinite Energy"] = false,
-		["Infinite Ability"] = true,
-		["Infinite Geppo"] = false,
-		["Infinite Soru"] = false,
-		["Dodge No Cooldown"] = false,
-		["Active Race V3"] = false,
-		["Active Race V4"] = true,
-		["Walk On Water"] = true,
-		["No Clip"] = false
-	},
-	Fruit = {
-		["Auto Buy Random Fruit"] = false,
-		["Store Rarity Fruit"] = "Common - Mythical",
-		["Auto Store Fruit"] = false,
-		["Fruit Notification"] = false,
-		["Teleport To Fruit"] = false,
-		["Tween To Fruit"] = false
-	},
-	Misc = {
-		["Hide Chat"] = false,
-		["Hide Leaderboard"] = false,
-		["Highlight Mode"] = false
-	}
-};
-(getgenv()).Load = function()
-	if readfile and writefile and isfile and isfolder then
-		if not isfolder("Relz Hub New") then
-			makefolder("Relz Hub New");
-		end;
-		if not isfolder("Relz Hub New/Blox Fruits/") then
-			makefolder("Relz Hub New/Blox Fruits/");
-		end;
-		if not isfile(("Relz Hub New/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
-			writefile("Relz Hub New/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", (game:GetService("HttpService")):JSONEncode(_G.Settings));
-		else
-			local Decode = (game:GetService("HttpService")):JSONDecode(readfile("Relz Hub New/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"));
-			for i, v in pairs(Decode) do
-				_G.Settings[i] = v;
-			end;
-		end;
-		print("Loaded!");
-	else
-		return warn("Status : Undetected Executor");
-	end;
-end;
+    MainTab = Window:AddTab("Main", "rbxassetid://7733960981"),
+    OthersTab = Window:AddTab("Others", "rbxassetid://7733960981"),
+    ItemsTab = Window:AddTab("Items", "rbxassetid://7733960981"),
+    SettingsTab = Window:AddTab("Settings", "rbxassetid://7733960981"),
+    LocalPlayerTab = Window:AddTab("Local Player", "rbxassetid://7733960981"),
+    StatsTab = Window:AddTab("Stats", "rbxassetid://7733960981"),
+    SeaEventTab = Window:AddTab("Sea Event", "rbxassetid://7733960981"),
+    SeaStackTab = Window:AddTab("Sea Stack", "rbxassetid://7733960981"),
+    SeaSettingsTab = Window:AddTab("Sea Settings", "rbxassetid://7733960981"),
+    DragonDojoTab = Window:AddTab("Dragon Dojo", "rbxassetid://7733960981"),
+    RaceTab = Window:AddTab("Race", "rbxassetid://7733960981"),
+    CombatTab = Window:AddTab("Combat", "rbxassetid://7733960981"),
+    RaidTab = Window:AddTab("Raid", "rbxassetid://7733960981"),
+    EspTab = Window:AddTab("Esp", "rbxassetid://7733960981"),
+    TeleportTab = Window:AddTab("Teleport", "rbxassetid://7733960981"),
+    ShopTab = Window:AddTab("Shop", "rbxassetid://7733960981"),
+    FruitTab = Window:AddTab("Fruit", "rbxassetid://7733960981"),
+    MiscTab = Window:AddTab("Misc", "rbxassetid://7733960981"),
+    ServerTab = Window:AddTab("Server", "rbxassetid://7733960981")
+}
+
+local MainSection = Tabs.MainTab:AddLeftGroupbox("Main")
+MainSection:AddDropdown("SelectWeapon", {
+    Title = "Select Weapon",
+    Values = {"Melee", "Sword", "Fruit"},
+    Default = "Melee",
+    Callback = function(val) _G.Settings.Main["Select Weapon"] = val end
+})
+MainSection:AddDropdown("FarmMethod", {
+    Title = "Farm Level Method",
+    Values = {"Quest", "No Quest", "Nearest"},
+    Default = "Quest",
+    Callback = function(val) _G.Settings.Main["Farm Level Method"] = val end
+})
+MainSection:AddToggle("AutoFarm", {
+    Title = "Auto Farm Level",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm"] = val end
+})
+MainSection:AddToggle("AutoFastFarm", {
+    Title = "Auto Fast Farm",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Fast Farm"] = val end
+})
+
+local MasterySection = Tabs.MainTab:AddLeftGroupbox("Mastery Farm")
+MasterySection:AddDropdown("MasteryMethod", {
+    Title = "Mastery Method",
+    Values = {"Quest", "No Quest", "Nearest", "Cakeprince", "Bones"},
+    Default = "Quest",
+    Callback = function(val) _G.Settings.Main["Mastery Method"] = val end
+})
+MasterySection:AddToggle("AutoFruitMastery", {
+    Title = "Auto Fruit Mastery",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm Fruit Mastery"] = val end
+})
+MasterySection:AddToggle("AutoGunMastery", {
+    Title = "Auto Gun Mastery",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm Gun Mastery"] = val end
+})
+MasterySection:AddToggle("AutoSwordMastery", {
+    Title = "Auto Sword Mastery",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm Sword Mastery"] = val end
+})
+
+local TyrantSection = Tabs.MainTab:AddLeftGroupbox("Tyrant Of The Skies")
+TyrantSection:AddToggle("AutoSummonTyrant", {
+    Title = "Auto Summon Tyrant",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Summon Tyrant Of The Skies"] = val end
+})
+TyrantSection:AddToggle("AutoKillTyrant", {
+    Title = "Auto Kill Tyrant",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Kill Tyrant Of The Skies"] = val end
+})
+
+local MonSection = Tabs.MainTab:AddLeftGroupbox("Mon Farm")
+MonSection:AddDropdown("SelectMon", {
+    Title = "Choose Mon",
+    Values = {},
+    Default = "",
+    Callback = function(val) _G.Settings.Main["Selected Mon"] = val end
+})
+MonSection:AddToggle("AutoMonFarm", {
+    Title = "Auto Farm Mon",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm Mon"] = val end
+})
+
+local BossSection = Tabs.MainTab:AddLeftGroupbox("Boss Farm")
+BossSection:AddDropdown("SelectBoss", {
+    Title = "Choose Boss",
+    Values = {},
+    Default = "",
+    Callback = function(val) _G.Settings.Main["Selected Boss"] = val end
+})
+BossSection:AddToggle("AutoFarmBoss", {
+    Title = "Auto Farm Boss",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm Boss"] = val end
+})
+BossSection:AddToggle("AutoFarmAllBoss", {
+    Title = "Auto Farm All Boss",
+    Default = false,
+    Callback = function(val) _G.Settings.Main["Auto Farm All Boss"] = val end
+})
+
+local OthersSection = Tabs.OthersTab:AddLeftGroupbox("Elite Hunter")
+OthersSection:AddToggle("AutoEliteHunter", {
+    Title = "Auto Elite Hunter",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Elite Hunter"] = val end
+})
+OthersSection:AddToggle("AutoEliteHunterHop", {
+    Title = "Auto Elite Hunter Hop",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Elite Hunter Hop"] = val end
+})
+
+local BoneSection = Tabs.OthersTab:AddLeftGroupbox("Bone Farm")
+BoneSection:AddDropdown("BoneMethod", {
+    Title = "Bone Farm Method",
+    Values = {"Quest", "No Quest"},
+    Default = "Quest",
+    Callback = function(val) _G.Settings.Farm["Selected Bone Farm Method"] = val end
+})
+BoneSection:AddToggle("AutoFarmBone", {
+    Title = "Auto Farm Bone",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Farm Bone"] = val end
+})
+BoneSection:AddToggle("AutoRandomSurprise", {
+    Title = "Auto Random Surprise",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Random Surprise"] = val end
+})
+
+local PirateSection = Tabs.OthersTab:AddLeftGroupbox("Pirate Raid")
+PirateSection:AddToggle("AutoPirateRaid", {
+    Title = "Auto Pirate Raid",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Pirate Raid"] = val end
+})
+
+local ChestSection = Tabs.OthersTab:AddLeftGroupbox("Chest Farm")
+ChestSection:AddToggle("AutoChestTween", {
+    Title = "Auto Farm Chest Tween",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Farm Chest Tween"] = val end
+})
+ChestSection:AddToggle("AutoChestInstant", {
+    Title = "Auto Farm Chest Instant",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Farm Chest Instant"] = val end
+})
+ChestSection:AddToggle("AutoStopItems", {
+    Title = "Auto Stop Items",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Stop Items"] = val end
+})
+
+local CakeSection = Tabs.OthersTab:AddLeftGroupbox("Cake Prince")
+CakeSection:AddToggle("AutoKatakuri", {
+    Title = "Auto Katakuri",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Farm Katakuri"] = val end
+})
+CakeSection:AddToggle("AutoSpawnCakePrince", {
+    Title = "Auto Spawn Cake Prince",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Spawn Cake Prince"] = val end
+})
+CakeSection:AddToggle("AutoKillCakePrince", {
+    Title = "Auto Kill Cake Prince",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Kill Cake Prince"] = val end
+})
+CakeSection:AddToggle("AutoKillDoughKing", {
+    Title = "Auto Kill Dough King",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Kill Dough King"] = val end
+})
+
+local MaterialSection = Tabs.OthersTab:AddLeftGroupbox("Materials")
+MaterialSection:AddDropdown("SelectMaterial", {
+    Title = "Choose Material",
+    Values = {},
+    Default = "",
+    Callback = function(val) _G.Settings.Farm["Selected Material"] = val end
+})
+MaterialSection:AddToggle("AutoFarmMaterial", {
+    Title = "Auto Farm Material",
+    Default = false,
+    Callback = function(val) _G.Settings.Farm["Auto Farm Material"] = val end
+})
+
+local ItemsWorld = Tabs.ItemsTab:AddLeftGroupbox("World")
+ItemsWorld:AddToggle("AutoSecondSea", {
+    Title = "Auto Second Sea",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Second Sea"] = val end
+})
+ItemsWorld:AddToggle("AutoThirdSea", {
+    Title = "Auto Third Sea",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Third Sea"] = val end
+})
+
+local FightingSection = Tabs.ItemsTab:AddLeftGroupbox("Fighting Style")
+FightingSection:AddToggle("AutoSuperHuman", {
+    Title = "Auto Super Human",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Super Human"] = val end
+})
+FightingSection:AddToggle("AutoDeathStep", {
+    Title = "Auto Death Step",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Death Step"] = val end
+})
+FightingSection:AddToggle("AutoSharkmanKarate", {
+    Title = "Auto Sharkman Karate",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Fishman Karate"] = val end
+})
+FightingSection:AddToggle("AutoElectricClaw", {
+    Title = "Auto Electric Claw",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Electric Claw"] = val end
+})
+FightingSection:AddToggle("AutoDragonTalon", {
+    Title = "Auto Dragon Talon",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Dragon Talon"] = val end
+})
+FightingSection:AddToggle("AutoGodHuman", {
+    Title = "Auto God Human",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto God Human"] = val end
+})
+
+local SwordGunSection = Tabs.ItemsTab:AddLeftGroupbox("Gun & Sword")
+SwordGunSection:AddToggle("AutoSaber", {
+    Title = "Auto Saber",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Saber"] = val end
+})
+SwordGunSection:AddToggle("AutoBuddySword", {
+    Title = "Auto Buddy Sword",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Buddy Sword"] = val end
+})
+SwordGunSection:AddToggle("AutoSoulGuitar", {
+    Title = "Auto Soul Guitar",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Soul Guitar"] = val end
+})
+SwordGunSection:AddToggle("AutoRengoku", {
+    Title = "Auto Rengoku",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Rengoku"] = val end
+})
+SwordGunSection:AddToggle("AutoHallowScythe", {
+    Title = "Auto Hallow Scythe",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Hallow Scythe"] = val end
+})
+SwordGunSection:AddToggle("AutoWardenSword", {
+    Title = "Auto Warden Sword",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Warden Sword"] = val end
+})
+SwordGunSection:AddToggle("AutoYama", {
+    Title = "Auto Yama",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Yama"] = val end
+})
+SwordGunSection:AddToggle("AutoTushita", {
+    Title = "Auto Tushita",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Tushita"] = val end
+})
+SwordGunSection:AddToggle("AutoDragonTrident", {
+    Title = "Auto Dragon Trident",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Dragon Trident"] = val end
+})
+SwordGunSection:AddToggle("AutoPole", {
+    Title = "Auto Pole",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Pole"] = val end
+})
+SwordGunSection:AddToggle("AutoSharkSaw", {
+    Title = "Auto Shark Saw",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Shawk Saw"] = val end
+})
+SwordGunSection:AddToggle("AutoGreybeard", {
+    Title = "Auto Greybeard",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Greybeard"] = val end
+})
+SwordGunSection:AddToggle("AutoDarkDagger", {
+    Title = "Auto Dark Dagger",
+    Default = false,
+    Callback = function(val) _G.Settings.Items["Auto Dark Dagger"] = val end
+})
+
+local SettingsSection = Tabs.SettingsTab:AddLeftGroupbox("Settings")
+SettingsSection:AddToggle("SpinPosition", {
+    Title = "Spin Position",
+    Default = false,
+    Callback = function(val) _G.Settings.Setting["Spin Position"] = val end
+})
+SettingsSection:AddSlider("FarmDistance", {
+    Title = "Farm Distance",
+    Min = 10, Max = 50, Default = 35,
+    Callback = function(val) _G.Settings.Setting["Farm Distance"] = val end
+})
+SettingsSection:AddSlider("PlayerTweenSpeed", {
+    Title = "Player Tween Speed",
+    Min = 10, Max = 350, Default = 350,
+    Callback = function(val) _G.Settings.Setting["Player Tween Speed"] = val end
+})
+SettingsSection:AddToggle("BringMob", {
+    Title = "Bring Mob",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Bring Mob"] = val end
+})
+SettingsSection:AddDropdown("BringMobMode", {
+    Title = "Bring Mob Mode",
+    Values = {"Low", "Normal", "High"},
+    Default = "Normal",
+    Callback = function(val) _G.Settings.Setting["Bring Mob Mode"] = val end
+})
+SettingsSection:AddDropdown("FastAttackMode", {
+    Title = "Fast Attack Mode",
+    Values = {"Slow", "Normal", "Fast", "Super Fast"},
+    Default = "Normal",
+    Callback = function(val) _G.Settings.Setting["Fast Attack Mode"] = val end
+})
+SettingsSection:AddToggle("AttackAura", {
+    Title = "Attack Aura",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Attack Aura"] = val end
+})
+
+local GraphicSection = Tabs.SettingsTab:AddLeftGroupbox("Graphic")
+GraphicSection:AddToggle("HideNotification", {
+    Title = "Hide Notification",
+    Default = false,
+    Callback = function(val) _G.Settings.Setting["Hide Notification"] = val end
+})
+GraphicSection:AddToggle("HideDamageText", {
+    Title = "Hide Damage Text",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Hide Damage Text"] = val end
+})
+GraphicSection:AddToggle("BlackScreen", {
+    Title = "Black Screen",
+    Default = false,
+    Callback = function(val) _G.Settings.Setting["Black Screen"] = val end
+})
+GraphicSection:AddToggle("WhiteScreen", {
+    Title = "White Screen",
+    Default = false,
+    Callback = function(val) _G.Settings.Setting["White Screen"] = val end
+})
+
+local MasterySettings = Tabs.SettingsTab:AddLeftGroupbox("Mastery Settings")
+MasterySettings:AddSlider("MasteryHealth", {
+    Title = "Mastery Health %",
+    Min = 1, Max = 100, Default = 25,
+    Callback = function(val) _G.Settings.Setting["Mastery Health"] = val end
+})
+
+local OthersSettings = Tabs.SettingsTab:AddLeftGroupbox("Others")
+OthersSettings:AddToggle("AutoSetSpawnPoint", {
+    Title = "Auto Set Spawn Point",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Auto Set Spawn Point"] = val end
+})
+OthersSettings:AddToggle("AutoObservation", {
+    Title = "Auto Observation",
+    Default = false,
+    Callback = function(val) _G.Settings.Setting["Auto Observation"] = val end
+})
+OthersSettings:AddToggle("AutoHaki", {
+    Title = "Auto Haki",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Auto Haki"] = val end
+})
+OthersSettings:AddToggle("AutoRejoin", {
+    Title = "Auto Rejoin",
+    Default = true,
+    Callback = function(val) _G.Settings.Setting["Auto Rejoin"] = val end
+})
+
+local LocalSection = Tabs.LocalPlayerTab:AddLeftGroupbox("Local Player")
+LocalSection:AddToggle("ActiveRaceV3", {
+    Title = "Active Race V3",
+    Default = false,
+    Callback = function(val) _G.Settings.LocalPlayer["Active Race V3"] = val end
+})
+LocalSection:AddToggle("ActiveRaceV4", {
+    Title = "Active Race V4",
+    Default = true,
+    Callback = function(val) _G.Settings.LocalPlayer["Active Race V4"] = val end
+})
+LocalSection:AddToggle("WalkOnWater", {
+    Title = "Walk On Water",
+    Default = true,
+    Callback = function(val) _G.Settings.LocalPlayer["Walk On Water"] = val end
+})
+LocalSection:AddToggle("NoClip", {
+    Title = "No Clip",
+    Default = false,
+    Callback = function(val) _G.Settings.LocalPlayer["No Clip"] = val end
+})
+
+local StatsSection = Tabs.StatsTab:AddLeftGroupbox("Stats")
+StatsSection:AddToggle("AutoAddMelee", {
+    Title = "Add Melee Stats",
+    Default = false,
+    Callback = function(val) _G.Settings.Stats["Auto Add Melee Stats"] = val end
+})
+StatsSection:AddToggle("AutoAddDefense", {
+    Title = "Add Defense Stats",
+    Default = false,
+    Callback = function(val) _G.Settings.Stats["Auto Add Defense Stats"] = val end
+})
+StatsSection:AddToggle("AutoAddSword", {
+    Title = "Add Sword Stats",
+    Default = false,
+    Callback = function(val) _G.Settings.Stats["Auto Add Sword Stats"] = val end
+})
+StatsSection:AddToggle("AutoAddGun", {
+    Title = "Add Gun Stats",
+    Default = false,
+    Callback = function(val) _G.Settings.Stats["Auto Add Gun Stats"] = val end
+})
+StatsSection:AddToggle("AutoAddDevilFruit", {
+    Title = "Add Devil Fruit Stats",
+    Default = false,
+    Callback = function(val) _G.Settings.Stats["Auto Add Devil Fruit Stats"] = val end
+})
+StatsSection:AddSlider("PointStats", {
+    Title = "Point Stats",
+    Min = 1, Max = 100, Default = 1,
+    Callback = function(val) _G.Settings.Stats["Point Stats"] = val end
+})
+
+local SeaSection = Tabs.SeaEventTab:AddLeftGroupbox("Sea Event")
+SeaSection:AddDropdown("SelectBoat", {
+    Title = "Choose Boat",
+    Values = {"Guardian", "Beast Hunter", "PirateGrandBrigade", "MarineGrandBrigade", "PirateBrigade", "MarineBrigade", "PirateSloop", "MarineSloop"},
+    Default = "Guardian",
+    Callback = function(val) _G.Settings.SeaEvent["Selected Boat"] = val end
+})
+SeaSection:AddDropdown("SelectZone", {
+    Title = "Choose Zone",
+    Values = {"Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5", "Zone 6", "Infinite"},
+    Default = "Zone 5",
+    Callback = function(val) _G.Settings.SeaEvent["Selected Zone"] = val end
+})
+SeaSection:AddSlider("BoatTweenSpeed", {
+    Title = "Boat Tween Speed",
+    Min = 1, Max = 350, Default = 300,
+    Callback = function(val) _G.Settings.SeaEvent["Boat Tween Speed"] = val end
+})
+SeaSection:AddToggle("SailBoat", {
+    Title = "Sail Boat",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaEvent["Sail Boat"] = val end
+})
+
+local SeaEnemies = Tabs.SeaEventTab:AddLeftGroupbox("Enemies")
+SeaEnemies:AddToggle("AutoShark", {
+    Title = "Auto Farm Shark",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Shark"] = val end
+})
+SeaEnemies:AddToggle("AutoPiranha", {
+    Title = "Auto Farm Piranha",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Piranha"] = val end
+})
+SeaEnemies:AddToggle("AutoFishCrew", {
+    Title = "Auto Farm Fish Crew Member",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Fish Crew Member"] = val end
+})
+
+local SeaBoat = Tabs.SeaEventTab:AddLeftGroupbox("Boat")
+SeaBoat:AddToggle("AutoGhostShip", {
+    Title = "Auto Farm Ghost Ship",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Ghost Ship"] = val end
+})
+SeaBoat:AddToggle("AutoPirateBrigade", {
+    Title = "Auto Farm Pirate Brigade",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Pirate Brigade"] = val end
+})
+SeaBoat:AddToggle("AutoPirateGrandBrigade", {
+    Title = "Auto Farm Pirate Grand Brigade",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Pirate Grand Brigade"] = val end
+})
+
+local SeaBoss = Tabs.SeaEventTab:AddLeftGroupbox("Boss")
+SeaBoss:AddToggle("AutoTerrorshark", {
+    Title = "Auto Farm Terrorshark",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Terrorshark"] = val end
+})
+SeaBoss:AddToggle("AutoSeabeasts", {
+    Title = "Auto Farm Seabeasts",
+    Default = true,
+    Callback = function(val) _G.Settings.SeaEvent["Auto Farm Seabeasts"] = val end
+})
+
+local SeaStackSection = Tabs.SeaStackTab:AddLeftGroupbox("Sea Stack")
+SeaStackSection:AddToggle("TweenToFrozen", {
+    Title = "Tween To Frozen Dimension",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Tween To Frozen Dimension"] = val end
+})
+SeaStackSection:AddToggle("SummonFrozen", {
+    Title = "Summon Frozen Dimension",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Summon Frozen Dimension"] = val end
+})
+SeaStackSection:AddToggle("TweenToKitsune", {
+    Title = "Tween To Kitsune Island",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Tween To Kitsune Island"] = val end
+})
+SeaStackSection:AddToggle("SummonKitsune", {
+    Title = "Summon Kitsune Island",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Summon Kitsune Island"] = val end
+})
+SeaStackSection:AddToggle("AutoCollectAzure", {
+    Title = "Auto Collect Azure Ember",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Auto Collect Azure Ember"] = val end
+})
+SeaStackSection:AddSlider("SetAzureEmber", {
+    Title = "Set Azure Ember",
+    Min = 1, Max = 25, Default = 20,
+    Callback = function(val) _G.Settings.SeaStack["Set Azure Ember"] = val end
+})
+SeaStackSection:AddToggle("AutoTradeAzure", {
+    Title = "Auto Trade Azure Ember",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Auto Trade Azure Ember"] = val end
+})
+SeaStackSection:AddToggle("TweenToMirage", {
+    Title = "Tween To Mirage Island",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Tween To Mirage Island"] = val end
+})
+SeaStackSection:AddToggle("SummonPrehistoric", {
+    Title = "Summon Prehistoric Island",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Summon Prehistoric Island"] = val end
+})
+SeaStackSection:AddToggle("TweenToPrehistoric", {
+    Title = "Tween To Prehistoric Island",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Tween To Prehistoric Island"] = val end
+})
+SeaStackSection:AddToggle("AutoKillLavaGolem", {
+    Title = "Auto Kill Lava Golem",
+    Default = false,
+    Callback = function(val) _G.Settings.SeaStack["Auto Kill Lava Golem"] = val end
+})
+
+local SeaSettings = Tabs.SeaSettingsTab:AddLeftGroupbox("Setting Sea")
+SeaSettings:AddToggle("Lightning", {
+    Title = "Lightning",
+    Default = false,
+    Callback = function(val) _G.Settings.SettingSea.Lightning = val end
+})
+SeaSettings:AddToggle("IncreaseBoatSpeed", {
+    Title = "Increase Boat Speed",
+    Default = false,
+    Callback = function(val) _G.Settings.SettingSea["Increase Boat Speed"] = val end
+})
+SeaSettings:AddToggle("NoClipRock", {
+    Title = "No Clip Rock",
+    Default = false,
+    Callback = function(val) _G.Settings.SettingSea["No Clip Rock"] = val end
+})
+SeaSettings:AddToggle("UseDevilFruitSkill", {
+    Title = "Use Devil Fruit Skill",
+    Default = true,
+    Callback = function(val) _G.Settings.SettingSea["Use Devil Fruit Skill"] = val end
+})
+SeaSettings:AddToggle("UseMeleeSkill", {
+    Title = "Use Melee Skill",
+    Default = true,
+    Callback = function(val) _G.Settings.SettingSea["Use Melee Skill"] = val end
+})
+SeaSettings:AddToggle("UseSwordSkill", {
+    Title = "Use Sword Skill",
+    Default = true,
+    Callback = function(val) _G.Settings.SettingSea["Use Sword Skill"] = val end
+})
+SeaSettings:AddToggle("UseGunSkill", {
+    Title = "Use Gun Skill",
+    Default = true,
+    Callback = function(val) _G.Settings.SettingSea["Use Gun Skill"] = val end
+})
+
+local DojoSection = Tabs.DragonDojoTab:AddLeftGroupbox("Dragon Dojo")
+DojoSection:AddToggle("AutoFarmBlazeEmber", {
+    Title = "Auto Farm Blaze Ember",
+    Default = false,
+    Callback = function(val) _G.Settings.DragonDojo["Auto Farm Blaze Ember"] = val end
+})
+DojoSection:AddToggle("AutoCollectBlazeEmber", {
+    Title = "Auto Collect Blaze Ember",
+    Default = false,
+    Callback = function(val) _G.Settings.DragonDojo["Auto Collect Blaze Ember"] = val end
+})
+
+local RaceSection = Tabs.RaceTab:AddLeftGroupbox("Race")
+RaceSection:AddToggle("AutoRaceV2", {
+    Title = "Auto Race V2",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Race V2"] = val end
+})
+RaceSection:AddToggle("AutoRaceV3", {
+    Title = "Auto Race V3",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Race V3"] = val end
+})
+RaceSection:AddDropdown("SelectPlace", {
+    Title = "Selected Place",
+    Values = {"Top Of GreatTree", "Timple Of Time", "Lever Pull", "Acient One"},
+    Default = "",
+    Callback = function(val) _G.Settings.Race["Selected Place"] = val end
+})
+RaceSection:AddToggle("TeleportToPlace", {
+    Title = "Teleport To Place",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Teleport To Place"] = val end
+})
+RaceSection:AddToggle("AutoBuyGear", {
+    Title = "Auto Buy Gear",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Buy Gear"] = val end
+})
+RaceSection:AddToggle("TweenToHighestMirage", {
+    Title = "Tween To Highest Mirage",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Tween To Highest Mirage"] = val end
+})
+RaceSection:AddToggle("FindBlueGear", {
+    Title = "Find Blue Gear",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Find Blue Gear"] = val end
+})
+RaceSection:AddToggle("LookMoonAbility", {
+    Title = "Look Moon Ability",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Look Moon Ability"] = val end
+})
+RaceSection:AddToggle("AutoTrain", {
+    Title = "Auto Train",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Train"] = val end
+})
+RaceSection:AddToggle("AutoKillPlayerAfterTrial", {
+    Title = "Auto Kill Player After Trial",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Kill Player After Trial"] = val end
+})
+RaceSection:AddToggle("AutoTrial", {
+    Title = "Auto Trial",
+    Default = false,
+    Callback = function(val) _G.Settings.Race["Auto Trial"] = val end
+})
+
+local CombatSection = Tabs.CombatTab:AddLeftGroupbox("Combat")
+CombatSection:AddToggle("AutoKillPlayerQuest", {
+    Title = "Auto Kill Player Quest",
+    Default = false,
+    Callback = function(val) _G.Settings.Combat["Auto Kill Player Quest"] = val end
+})
+CombatSection:AddToggle("AimbotGun", {
+    Title = "Aimbot Gun",
+    Default = false,
+    Callback = function(val) _G.Settings.Combat["Aimbot Gun"] = val end
+})
+CombatSection:AddToggle("AimbotSkillNeares", {
+    Title = "Aimbot Skill Neares",
+    Default = false,
+    Callback = function(val) _G.Settings.Combat["Aimbot Skill Neares"] = val end
+})
+CombatSection:AddToggle("AimbotSkill", {
+    Title = "Aimbot Skill",
+    Default = false,
+    Callback = function(val) _G.Settings.Combat["Aimbot Skill"] = val end
+})
+CombatSection:AddToggle("EnablePvP", {
+    Title = "Enable PvP",
+    Default = false,
+    Callback = function(val) _G.Settings.Combat["Enable PvP"] = val end
+})
+
+local RaidSection = Tabs.RaidTab:AddLeftGroupbox("Raid")
+RaidSection:AddDropdown("SelectChip", {
+    Title = "Choose Chip",
+    Values = {},
+    Default = "",
+    Callback = function(val) _G.Settings.Raid["Selected Chip"] = val end
+})
+RaidSection:AddToggle("AutoRaid", {
+    Title = "Auto Raid",
+    Default = false,
+    Callback = function(val) _G.Settings.Raid["Auto Raid"] = val end
+})
+RaidSection:AddToggle("AutoAwaken", {
+    Title = "Auto Awaken",
+    Default = false,
+    Callback = function(val) _G.Settings.Raid["Auto Awaken"] = val end
+})
+RaidSection:AddSlider("PriceDevilFruit", {
+    Title = "Price Devil Fruit",
+    Min = 1, Max = 10000000, Default = 1000000,
+    Callback = function(val) _G.Settings.Raid["Price Devil Fruit"] = val end
+})
+RaidSection:AddToggle("UnstoreDevilFruit", {
+    Title = "Unstore Devil Fruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Raid["Unstore Devil Fruit"] = val end
+})
+RaidSection:AddToggle("LawRaid", {
+    Title = "Law Raid",
+    Default = false,
+    Callback = function(val) _G.Settings.Raid["Law Raid"] = val end
+})
+
+local EspSection = Tabs.EspTab:AddLeftGroupbox("Esp")
+EspSection:AddToggle("ESPPlayer", {
+    Title = "ESP Player",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Player"] = val end
+})
+EspSection:AddToggle("ESPChest", {
+    Title = "ESP Chest",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Chest"] = val end
+})
+EspSection:AddToggle("ESPDevilFruit", {
+    Title = "ESP DevilFruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP DevilFruit"] = val end
+})
+EspSection:AddToggle("ESPRealFruit", {
+    Title = "ESP RealFruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP RealFruit"] = val end
+})
+EspSection:AddToggle("ESPFlower", {
+    Title = "ESP Flower",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Flower"] = val end
+})
+EspSection:AddToggle("ESPIsland", {
+    Title = "ESP Island",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Island"] = val end
+})
+EspSection:AddToggle("ESPNpc", {
+    Title = "ESP Npc",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Npc"] = val end
+})
+EspSection:AddToggle("ESPSeaBeast", {
+    Title = "ESP Sea Beast",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Sea Beast"] = val end
+})
+EspSection:AddToggle("ESPMonster", {
+    Title = "ESP Monster",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Monster"] = val end
+})
+EspSection:AddToggle("ESPMirage", {
+    Title = "ESP Mirage",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Mirage"] = val end
+})
+EspSection:AddToggle("ESPKitsune", {
+    Title = "ESP Kitsune",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Kitsune"] = val end
+})
+EspSection:AddToggle("ESPFrozen", {
+    Title = "ESP Frozen",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Frozen"] = val end
+})
+EspSection:AddToggle("ESPAdvancedFruitDealer", {
+    Title = "ESP Advanced Fruit Dealer",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Advanced Fruit Dealer"] = val end
+})
+EspSection:AddToggle("ESPAura", {
+    Title = "ESP Aura",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Aura"] = val end
+})
+EspSection:AddToggle("ESPGear", {
+    Title = "ESP Gear",
+    Default = false,
+    Callback = function(val) _G.Settings.Esp["ESP Gear"] = val end
+})
+
+local TeleportSection = Tabs.TeleportTab:AddLeftGroupbox("Teleport")
+TeleportSection:AddButton({
+    Title = "Teleport To First Sea",
+    Callback = function() (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("TravelMain") end
+})
+TeleportSection:AddButton({
+    Title = "Teleport To Second Sea",
+    Callback = function() (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("TravelDressrosa") end
+})
+TeleportSection:AddButton({
+    Title = "Teleport To Third Sea",
+    Callback = function() (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("TravelZou") end
+})
+
+local ShopSection = Tabs.ShopTab:AddLeftGroupbox("Shop")
+ShopSection:AddToggle("AutoBuyLegendarySword", {
+    Title = "Auto Buy Legendary Sword",
+    Default = false,
+    Callback = function(val) _G.Settings.Shop["Auto Buy Legendary Sword"] = val end
+})
+ShopSection:AddToggle("AutoBuyHakiColor", {
+    Title = "Auto Buy Haki Color",
+    Default = false,
+    Callback = function(val) _G.Settings.Shop["Auto Buy Haki Color"] = val end
+})
+
+local FruitSection = Tabs.FruitTab:AddLeftGroupbox("Fruit")
+FruitSection:AddToggle("AutoRandomFruit", {
+    Title = "Auto Random Fruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Fruit["Auto Buy Random Fruit"] = val end
+})
+FruitSection:AddDropdown("StoreRarityFruit", {
+    Title = "Store Rarity Fruit",
+    Values = {"Common - Mythical", "Uncommon - Mythical", "Rare - Mythical", "Legendary - Mythical", "Mythical"},
+    Default = "Common - Mythical",
+    Callback = function(val) _G.Settings.Fruit["Store Rarity Fruit"] = val end
+})
+FruitSection:AddToggle("AutoStoreFruit", {
+    Title = "Auto Store Fruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Fruit["Auto Store Fruit"] = val end
+})
+FruitSection:AddToggle("FruitNotification", {
+    Title = "Fruit Notification",
+    Default = false,
+    Callback = function(val) _G.Settings.Fruit["Fruit Notification"] = val end
+})
+FruitSection:AddToggle("TeleportToFruit", {
+    Title = "Teleport To Fruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Fruit["Teleport To Fruit"] = val end
+})
+FruitSection:AddToggle("TweenToFruit", {
+    Title = "Tween To Fruit",
+    Default = false,
+    Callback = function(val) _G.Settings.Fruit["Tween To Fruit"] = val end
+})
+
+local MiscSection = Tabs.MiscTab:AddLeftGroupbox("Misc")
+MiscSection:AddButton({
+    Title = "Join Pirates Team",
+    Callback = function() (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("SetTeam", "Pirates") end
+})
+MiscSection:AddButton({
+    Title = "Join Marines Team",
+    Callback = function() (game:GetService("ReplicatedStorage")).Remotes.CommF_:InvokeServer("SetTeam", "Marines") end
+})
+
+local ServerSection = Tabs.ServerTab:AddLeftGroupbox("Server")
+ServerSection:AddButton({
+    Title = "Rejoin Server",
+    Callback = function() (game:GetService("TeleportService")):Teleport(game.PlaceId) end
+})
+ServerSection:AddButton({
+    Title = "Server Hop",
+    Callback = function() Hop() end
+})
 (getgenv()).SaveSetting = function()
 	if readfile and writefile and isfile and isfolder then
 		if not isfile(("Relz Hub New/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json")) then
