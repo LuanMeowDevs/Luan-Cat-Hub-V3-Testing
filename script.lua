@@ -2389,7 +2389,7 @@ QuestNeta = function()
 			[6] = PosQ,
 		};
 	end;
-	local Library = loadstring(game:HttpGet("https://pastefy.app/2NsMZRkm/raw"))():MakeWindow({
+	local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/LuanMeowDevs/SYNFK/refs/heads/main/script.lua"))():MakeWindow({
     Title = "Luan Cat Hub",
     SubTitle = "by Luan Cat And 1x1x1x1x1",
     SaveFolder = "M3Ow.json"
