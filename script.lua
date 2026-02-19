@@ -1,3 +1,9 @@
+--[[
+    M3Ow Cat Hub - Optimized Version
+    Performance & Code Quality Improvements
+]]
+
+-- Cache all services at start for better performance
 local Services = setmetatable({}, {
     __index = function(self, serviceName)
         local service = game:GetService(serviceName)
@@ -10,7 +16,7 @@ local function NotificacaoNightMystic(titulo, mensagem)
     local success = pcall(function()
         local TweenService = Services.TweenService
         local CoreGui = Services.CoreGui
-        local LogoID = "rbxassetid://84722735301781"
+        local LogoID = "rbxassetid://118405308091311"
 
         local ScreenGui = Instance.new("ScreenGui")
         ScreenGui.Name = "NM_Notify"
@@ -87,17 +93,17 @@ local function NotificacaoNightMystic(titulo, mensagem)
     end)
     
     if not success then
-        warn("[Luan] Erro ao exibir notificação")
+        warn("[M3Ow] Erro ao exibir notificação")
     end
 end
 
-NotificacaoNightMystic("Luan Cat Hub", "Script carregado com sucesso!")
+NotificacaoNightMystic("M3Ow Hub", "Script carregado com sucesso!")
 
 -- ========================================
 -- SAVE SYSTEM (Optimized)
 -- ========================================
 local HttpService = Services.HttpService
-local FolderName = "Luan Cat Hub"
+local FolderName = "Lol Hub"
 local FileName = "Settings.json"
 local FullPath = FolderName .. "/" .. FileName
 
@@ -2389,9 +2395,9 @@ QuestNeta = function()
 			[6] = PosQ,
 		};
 	end;
-	local Library = loadstring(game:HttpGet("https://pastefy.app/imQ3rLLF/raw"))():MakeWindow({
-    Title = "Luan Cat V4",
-    SubTitle = "by Luan Cat And 1x1x1x1x1",
+	local Library = loadstring(game:HttpGet("https://pastefy.app/2NsMZRkm/raw"))():MakeWindow({
+    Title = "M3Ow Hub",
+    SubTitle = "by M3Ow Cat and 1x1x1x1x1x1",
     SaveFolder = "M3Ow.json"
 })
 -- Criar ScreenGui
@@ -2403,7 +2409,7 @@ screenGui.Parent = game.CoreGui
 local imageButton = Instance.new("ImageButton")
 imageButton.Size = UDim2.new(0, 50, 0, 50)
 imageButton.Position = UDim2.new(0.15, 0, 0.15, 0)
-imageButton.Image = "rbxassetid://84722735301781"
+imageButton.Image = "rbxassetid://118405308091311"
 imageButton.BackgroundTransparency = 1
 imageButton.Parent = screenGui
 
@@ -2416,7 +2422,7 @@ uiCorner.Parent = imageButton
 local uiStroke = Instance.new("UIStroke", imageButton)
 uiStroke.Thickness = 2
 uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-uiStroke.Color = Color3.fromRGB(255, 255, 255) -- Magenta/Rosa forte
+uiStroke.Color = Color3.fromRGB(255, 200, 40) -- Magenta/Rosa forte
 
 -- Variáveis para arrastar
 local dragging = false
@@ -2494,14 +2500,14 @@ local Farm = Library:MakeTab({
     Icon = "rbxassetid://127561653320876"
 })
 
-local Others = Library:MakeTab({
-    Title = "Tab Farm Others",
-    Icon = "rbxassetid://10723405360"
-})
-
 local Maestry = Library:MakeTab({
     Title = "Tab Farm Maestry",
     Icon = "rbxassetid://10709782497"
+})
+
+local Others = Library:MakeTab({
+    Title = "Tab Farm Others",
+    Icon = "rbxassetid://10723405360"
 })
 
 local Event = Library:MakeTab({
@@ -2534,14 +2540,14 @@ local Teleport = Library:MakeTab({
     Icon = "rbxassetid://10734886004"
 })
 
-local Fruit = Library:MakeTab({
-    Title = "Tab Raid & Fruit",
-    Icon = "rbxassetid://11155986081"
-})
-
 local Get = Library:MakeTab({
     Title = "Tab Get Items & Upgrade",
     Icon = "rbxassetid://13075622619"
+})
+
+local Fruit = Library:MakeTab({
+    Title = "Tab Raid & Fruit",
+    Icon = "rbxassetid://11155986081"
 })
 
 local Setting = Library:MakeTab({
@@ -2549,10 +2555,10 @@ local Setting = Library:MakeTab({
     Icon = "rbxassetid://7734053495"
 })
 Discord:AddDiscordInvite({
-    Name = "Luan Cat Hub",
-    Description = "Join for update script support and much more!",
-    Logo = "rbxassetid://84722735301781",
-    Invite = "https://discord.gg/SJDw9D6KeT"
+    Name = "M3Ow Hub",
+    Description = "Join for support and updates",
+    Logo = "rbxassetid://118405308091311",
+    Invite = "https://discord.gg/cSKq2mUz3D"
 })
 local credits = Discord:AddParagraph({
     Title = "Credits For Someone Peoples",
@@ -4290,7 +4296,7 @@ Setting:AddButton({
             
             -- Notificação Universal (Funciona sem a lib Fluent)
             game.StarterGui:SetCore("SendNotification", {
-                Title = "Luan Cat Hub",
+                Title = "M3Ow Hub",
                 Text = "Configurações salvas com sucesso!",
                 Duration = 5
             })
@@ -4311,13 +4317,13 @@ Setting:AddButton({
             
             -- Notificação Universal
             game.StarterGui:SetCore("SendNotification", {
-                Title = "Luan Cat Hub",
+                Title = "M3Ow Hub",
                 Text = "Configurações resetadas! Re-execute o script.",
                 Duration = 5
             })
         else
             game.StarterGui:SetCore("SendNotification", {
-                Title = "Luan Cat Hub V4",
+                Title = "M3Ow Hub",
                 Text = "Nenhum arquivo de save encontrado para apagar.",
                 Duration = 3
             })
@@ -4597,7 +4603,7 @@ local ToolAbilities = Net:WaitForChild("RF/JobToolAbilities")
 -- =========================================================
 -- CONFIGURAÇÃO DA NOTIFICAÇÃO CUSTOMIZADA (FULL BLACK)
 -- =========================================================
-local LogoID = "rbxassetid://115377474207871"
+local LogoID = "rbxassetid://118405308091311"
 
 local function NotifyNightMystic(texto)
     task.spawn(function()
@@ -12105,6 +12111,6 @@ end)
 _ENV.rz_FastAttack = FastAttack
 FastAttackModule.FastAttack = FastAttack
 
-NotificacaoNightMystic("Luan Cat Hub", "✅ Todos os sistemas carregados!")
+NotificacaoNightMystic("M3Ow Hub", "✅ Todos os sistemas carregados!")
 
 return FastAttackModulem
