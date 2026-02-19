@@ -1,4 +1,3 @@
---[[This file was beautified by Galactic Tools | https://discord.gg/RNzAwYMj2t]]
 local vu1 = select(1, ...) or {
     JoinTeam = "Pirates",
     Translator = true
@@ -94,8 +93,8 @@ if not (vu14.Team or vu14:FindFirstChild("Main")) then
         task.wait()
     end
 end
-if vu32.Luan_hub_error then
-    vu32.Luan_hub_error:Destroy()
+if vu32.redz_hub_error then
+    vu32.redz_hub_error:Destroy()
 end
 local vu54 = {
     Owner = "https://raw.githubusercontent.com/newredz/"
